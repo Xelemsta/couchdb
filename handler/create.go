@@ -60,11 +60,9 @@ func Create(w http.ResponseWriter, r *http.Request) error {
 	log.Printf("successfully created db")
 
 	log.Printf("pushing documents")
-	for index, doc := range documents {
-		err := couchdb.CreateDocument(ctx, strconv.Itoa(index+1), doc, uniqueDBName)
-		if err != nil {
-			return apiError(err)
-		}
+	err = couchdb.CreateDocuments(ctx, documents, uniqueDBName)
+	if err != nil {
+		return apiError(err)
 	}
 	log.Printf("successfully pushed documents")
 

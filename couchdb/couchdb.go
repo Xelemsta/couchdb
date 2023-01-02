@@ -3,10 +3,11 @@ package couchdb
 import (
 	"bytes"
 	"context"
-	"couchdb/configuration"
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"couchdb/configuration"
 )
 
 var client *http.Client
